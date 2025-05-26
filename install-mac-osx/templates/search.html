@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Искать рецепты</h1>
+
+    <form method="POST">
+        <label for="search_term">Поисковый запрос:</label>
+        <input type="text" id="search_term" name="search_term" required>
+
+        <label for="search_type">Искать по:</label>
+        <select id="search_type" name="search_type">
+            <option value="name">Recipe Name</option>
+            <option value="country">Country</option>
+            <option value="ingredient">Ingredient</option>
+        </select>
+
+        <button type="submit">Search</button>
+        <div style="margin-top: 20px;">
+            <button onclick="window.history.back()">Назад</button>
+        </div>
+    </form>
+{% endblock %}
+

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Добавить новый рецепт</h1>
+
+    <form method="POST">
+        <label for="name">Рецепты:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="ingredients">Ингредиенты (через запятую):</label>
+        <input type="text" id="ingredients" name="ingredients" required>
+
+        <label for="country">Страна:</label>
+        <input type="text" id="country" name="country" required>
+
+        <label for="recipe_text">Этапы приготовления:</label>
+        <textarea id="recipe_text" name="recipe_text" rows="10" required></textarea>
+
+        <button type="submit">Добавить рецепт</button>
+
+        <div style="margin-top: 20px;">
+            <button onclick="window.history.back()">Назад</button>
+        </div>
+    </form>
+{% endblock %}
+

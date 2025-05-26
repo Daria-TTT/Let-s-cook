@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Search Results for "{{ search_term }}"</h1>
+
+    {% if recipes %}
+        {% for recipe in recipes %}
+            <div class="recipe">
+                <h2>{{ recipe.name }}</h2>
+                <p><strong>Страна:</strong> {{ recipe.country }}</p>
+                <p><strong>Ингредиенты:</strong> {{ recipe.ingredients }}</p>
+                <p><strong>Рецепт:</strong></p>
+                <p>{{ recipe.recipe_text }}</p>
+                <form method="POST" action="{{ url_for('delete_recipe', recipe_id=recipe.id) }}" style="margin-top: 10px;">
+                    <button type="submit" class="delete-button">Удалить рецепт</button>
+                </form>
+            </div>
+            <div style="margin-top: 20px;">
+                <button onclick="window.history.back()">Назад</button>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No recipes found matching your search.</p>
+    {% endif %}
+{% endblock %}

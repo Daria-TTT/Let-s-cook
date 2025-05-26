@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приложение рецептов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fffaf0;
+        }
+        nav {
+            background: #fffacd;  /* Пастельно-желтый фон */
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid #ffe4b5; /* Светлая граница */
+            font-size: 14px;
+        }
+        nav a {
+            background: #ffb3b3;  /*мягко-красный фон кнопок */
+            color: #000;         /* Черный текст */
+            padding: 8px 15px;
+            margin-right: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            border: 1px solid #ff8080;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            background: #ff9999;  /* Темнее при наведении */
+        }
+        .recipe {
+            border: 1px solid #ffe4b5; /* Желтоватая граница */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #fffff0; /* Очень светлый желтый фон для карточек */
+        }
+        form {
+            max-width: 600px;
+            margin: 20px 0;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            box-sizing: border-box;
+            border: 1px solid #ffe4b5;
+            border-radius: 4px;
+            background-color: #fffff8;
+        }
+        /* Стиль для кнопки удаления */
+        .delete-button {
+            background: #ff6b6b;
+            color: white;
+            border: 1px solid #ff5252;
+        }
+        .delete-button:hover {
+            background: #ff5252;
+        }
+        /* Стили кнопок */
+        button, .button {
+            background: #ffb3b3;
+            color: #000;
+            border: 1px solid #ff8080;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 5px 0;
+            transition: background 0.3s;
+        }
+        button:hover, .button:hover {
+            background: #ff9999;
+        }
+        /* Стиль для кнопки "Назад" */
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Меню</a>
+        <a href="{{ url_for('add_recipe') }}">Добавить рецепт</a>
+        <a href="{{ url_for('search') }}">Поиск</a>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    {% if request.referrer and not request.path == '/' %}
+    {% endif %}
+</body>
+</html>
+
+
